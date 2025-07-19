@@ -1,0 +1,22 @@
+#instaler pyspark
+!pip install findspark
+!pip install pyspark
+import findspark
+import pyspark
+findspark.init()
+
+from pyspark.sql import SparkSession
+
+# Créer une session Spark
+spark = SparkSession.builder \
+    .appName("ProjetFinal") \
+    .getOrCreate()
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("jayaantanaath/student-habits-vs-academic-performance")
+
+# Chemin du fichier CSV
+csv_file_path = path+"/student_habits_performance.csv"
+
+print("Chemin du fichier CSV:", csv_file_path)
